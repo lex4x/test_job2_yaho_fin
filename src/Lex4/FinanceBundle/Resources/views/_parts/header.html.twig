@@ -1,0 +1,33 @@
+<nav class="navbar navbar-default navbar-fixed-top" style="display: inline-block">
+    <div class="container"> {#container-fluid#}
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{{ path('index') }}">Home</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+
+                {% else %}
+                    <li><a href="{{ path('fos_user_security_login') }}">Login</a></li>
+                    <li><a href="{{ path('fos_user_registration_register') }}">Register</a></li>
+                {% endif %}
+
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                    <li><a>{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}</a></li>
+                    <li><a>|</a></li>
+                    <li><a href="{{ path('fos_user_security_logout') }}">
+                        {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                    </a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>

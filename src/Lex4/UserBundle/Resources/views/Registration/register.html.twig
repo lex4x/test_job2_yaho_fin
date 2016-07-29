@@ -1,0 +1,12 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block fos_user_content %}
+<div class="col-xs-6">
+    <div class="panel panel-default">
+        <div class="panel-heading">Registration</div>
+        <div class="panel-body">
+            {% include "FOSUserBundle:Registration:register_content.html.twig" %}
+        </div>
+    </div>
+</div>
+{% endblock fos_user_content %}

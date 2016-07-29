@@ -1,0 +1,10 @@
+lex4_finance:
+    resource: "@Lex4FinanceBundle/Controller/"
+    type:     annotation
+
+lex4_user:
+    resource: "@Lex4UserBundle/Controller/"
+    type:     annotation
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"

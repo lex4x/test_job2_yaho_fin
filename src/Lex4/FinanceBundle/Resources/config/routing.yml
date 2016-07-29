@@ -1,0 +1,3 @@
+lex4_finance_homepage:
+    path:     /
+    defaults: { _controller: Lex4FinanceBundle:Default:index }

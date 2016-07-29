@@ -1,0 +1,57 @@
+{% extends 'Lex4FinanceBundle::app_layout.html.twig' %}
+
+{% block content_layout %}
+    <div class="row">
+        <table class="table table-striped">
+            <tr>
+                <th width="100px">#</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Symbol</th>
+                <td>{{ entity.symbol }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ entity.name }}</td>
+            </tr>
+            <tr>
+                <th>Get data of last two years</th>
+                <td>
+                    <a href="{{ path('yahoo_data_renew', {'id': entity.id}) }}" class="btn btn-default">
+                        <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <th>Data</th>
+                <td>
+                    <div class="charts-container">
+                        <div id="placeholder" class="charts-placeholder"></div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        $(function() {
+
+            var d = {{ entity.data|raw }};
+            $.plot("#placeholder", [d], {
+                xaxis: { mode: "time" }
+            });
+
+            $("#whole").click(function () {
+                $.plot("#placeholder", [d], {
+                    xaxis: { mode: "time" }
+                });
+            });
+        });
+    </script>
+{% endblock %}

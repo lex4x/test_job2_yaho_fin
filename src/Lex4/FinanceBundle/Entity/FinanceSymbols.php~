@@ -1,0 +1,62 @@
+<?php
+
+namespace Lex4\FinanceBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+ * FinanceSymbols
+ *
+ * @ORM\Table(name="finance_symbols")
+ * @ORM\Entity
+ */
+class FinanceSymbols
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @ var integer
+     *
+     * @ Assert\NotNull(message = "Должен быть указан id пользователя")
+     * @ ORM\Column(name="user_id", type="integer", nullable=false)
+     */
+//    private $userId;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Lex4\UserBundle\Entity\User", inversedBy="finance_symbols")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    private $user;
+
+    /**
+     * @var string
+     *
+     * @Assert\NotBlank(message = "Поле не может быть пустым")
+     * @ORM\Column(name="symbol", type="string", length=255, nullable=false)
+     */
+    private $symbol;
+
+    /**
+     * @var string
+     *
+     * @Assert\NotBlank(message = "Поле не может быть пустым")
+     * @ORM\Column(name="name", type="string", length=255, nullable=false)
+     */
+    private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="data", type="text", nullable=true)
+     */
+    private $data;
+
+}
