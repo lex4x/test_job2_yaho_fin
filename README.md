@@ -3,22 +3,22 @@ test_job2_yaho_fin
 
 ## установка ##
 
-1. склонировать репозиторий
+1 - склонировать репозиторий
 ```cmd
 git clone https://github.com/lex4x/test_job2_yaho_fin.git
 ```
 
-2. установить требуемые либы композером
+2 - установить требуемые либы композером
 ```cmd
 composer update
 ```
 
-3. создать таблицы для данных приложения
+3 - создать таблицы для данных приложения
 ```cmd
 php app/console doctrine:schema:update --force
 ```
 
-4. установить assets
+4 - установить assets
 ```cmd
 php app/console assets:install
 ```
